@@ -89,4 +89,10 @@ public class DashboardResource {
         return ResponseEntity.ok(MonthlyProductionByWeek);
     }
 
+    @GetMapping("/production/monthly-production-by-Availability")
+    public ResponseEntity<List<Object[]>> getMonthlyProductionByAvailability() {
+        List<Object[]> MonthlyProductionByAvailability = dashboardService.getMonthlyProductionByAvailability();
+        return ResponseEntity.ok(MonthlyProductionByAvailability);
+    }
+
 }

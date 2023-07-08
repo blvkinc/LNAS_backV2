@@ -82,4 +82,12 @@ public class DashboardService {
         return dashboardRepository.calculateMonthlyProductionByWeek(firstDayOfMonth, lastDayOfMonth);
     }
 
+    public List<Object[]> getMonthlyProductionByAvailability() {
+        OffsetDateTime currentDate = OffsetDateTime.now();
+        YearMonth yearMonth = YearMonth.from(currentDate.toLocalDate());
+        OffsetDateTime firstDayOfMonth = yearMonth.atDay(1).atStartOfDay().atOffset(currentDate.getOffset());
+        OffsetDateTime lastDayOfMonth = yearMonth.atEndOfMonth().atTime(23, 59, 59).atOffset(currentDate.getOffset());
+        return dashboardRepository.getTotalProductionQuantityByMonth(firstDayOfMonth, lastDayOfMonth);
+    }
+
 }

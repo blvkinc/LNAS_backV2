@@ -61,5 +61,11 @@ public interface DashboardRepository extends JpaRepository<Transaction, Long>, J
             "GROUP BY WEEK(p.dateCreated)")
     List<Object[]> calculateMonthlyProductionByWeek(OffsetDateTime startDate, OffsetDateTime endDate);
 
+    @Query("SELECT WEEK(p.dateCreated) as week, SUM(p.qty) as totalProduction " +
+            "FROM Production p " +
+            "WHERE p.status = 'AVAILABLE' AND p.dateCreated BETWEEN :startDate AND :endDate " +
+            "GROUP BY WEEK(p.dateCreated)")
+    List<Object[]> getTotalProductionQuantityByMonth(OffsetDateTime startDate, OffsetDateTime endDate);
+
 
 }
