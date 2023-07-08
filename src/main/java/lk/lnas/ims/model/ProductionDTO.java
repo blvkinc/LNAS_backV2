@@ -2,9 +2,9 @@ package lk.lnas.ims.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.time.OffsetDateTime;
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Getter
 @Setter
@@ -31,4 +31,7 @@ public class ProductionDTO {
 
     private Long farm;
 
+    private OffsetDateTime dateCreated;
+
+    private OffsetDateTime lastUpdated;
 }
